@@ -61,7 +61,7 @@ function App() {
     setError(null); // Reset error before making the request
     try {
       console.log("Making API request...");
-      const response = await fetch('https://dummyjson.com/quotes/random'); // Use the new API URL
+      const response = await fetch('https://dummyjson.com/quostes/random'); // Use the new API URL
       
       if (response.ok) {
         const data = await response.json();
@@ -79,10 +79,14 @@ function App() {
           setnextQuoteBut("Change quote :)");
           }
         } else {
-          setError("Quote or author missing in the response");
+          // setError("Quote or author missing in the response");
+          setnextQuote("There was a problem loading the quote");
         }
       } else {
-        setError("Failed to fetch quote");
+        // setError("Failed to fetch quote");
+        setnextQuote("There was a problem connecting to the server");
+        setError("Sorry for the incovinience :(")
+        setnextQuoteBut("Please try again!");
       }
     } catch (err) {
       console.error("Error fetching quote:", err);
@@ -200,11 +204,12 @@ function App() {
             {/* {loading ? 'Loading...' : nextQuote} */}
             {nextQuote}
           </Typography>
-          {error && <Typography sx={{ color: 'red' }}>{error}</Typography>}
+          {error && <Typography sx={{textAlign:'center'}}>{error}</Typography>}
     
     <Button 
     // onClick={handleClick}
     onClick={fetchQuote}
+    // disabled={loading}
      sx={{
       textTransform: "none",
       width: 'fit-content',
