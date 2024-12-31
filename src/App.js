@@ -42,12 +42,12 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setOpen(true); // Open the modal after 1 second
-    }, 1000);
+    }, 500);
 
     // Close the modal after 5 seconds
     const closeTimer = setTimeout(() => {
       setOpen(false); // Close the modal after 5 seconds
-    }, 6000);
+    }, 3000);
 
     // Cleanup timers when component unmounts or when the modal is closed
     return () => {
