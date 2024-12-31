@@ -30,6 +30,12 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Pacifico-Regular';  /* This is the font name you'll use */
+  src: url('/src/assets/fonts/Pacifico-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 .logo:hover{
   transition: transform 2.3s ease-in-out;
   scale: 1.01;
@@ -38,7 +44,7 @@
   position: fixed;
   top:1rem;
   left:2.3rem;
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   user-select: none;
   transition: transform 2.3s ease;
 }
