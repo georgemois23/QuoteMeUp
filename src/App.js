@@ -68,9 +68,16 @@ function App() {
         console.log("Fetched data:", data); // Check the response data in the console
         // Assuming the response contains a quote and an author
         if (data && data.quote && data.author) {
+
+          if(data.quote.length>100 ){
+            fetchQuote();
+            console.log("Too big quote");
+          }
+          else{
           // setnextQuote(`"${data.quote}"\n - ${data.author}`);
           setnextQuote(`"${data.quote}"\n - ${data.author}`);
           setnextQuoteBut("Change quote :)");
+          }
         } else {
           setError("Quote or author missing in the response");
         }
@@ -151,7 +158,7 @@ function App() {
           </Box>
         </Fade>
       </Modal>
-       <Typography variant="div" className="logo" style={{ fontFamily: 'Audiowide, sans-serif' }}>
+       <Typography variant="div" className="logo" style={{ fontFamily: 'Pacifico-Regular ,Audiowide, Ruslan Display,Chelsea Market, sans-serif' }}>
         Quote me up!
       </Typography>
       <Button
