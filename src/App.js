@@ -173,7 +173,7 @@ function App() {
           fontSize: '17px',
           backgroundColor: 'text.primary',
           position: 'fixed', // Fixed positioning
-          top: '.8rem',       // Top distance
+          top: '1.3rem',       // Top distance
           right: '2.3rem',     // Right distance
           color: 'background.default'
           // ,fontFamily: 'Chelsea Market, sans-serif'
