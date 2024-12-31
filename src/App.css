@@ -1,0 +1,92 @@
+.App {
+  text-align: center;
+}
+
+*{
+  user-select: none;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+@font-face {
+  font-family: 'Chelsea Market';  /* This is the font name you'll use */
+  src: url('/src/assets/fonts/ChelseaMarket-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ruslan Display';  /* This is the font name you'll use */
+  src: url('/src/assets/fonts/RuslanDisplay-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Audiowide';  /* This is the font name you'll use */
+  src: url('/src/assets/fonts/Audiowide-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.logo:hover{
+  transition: transform 2.3s ease-in-out;
+  scale: 1.01;
+}
+.logo{
+  position: fixed;
+  top:1rem;
+  left:2.3rem;
+  font-size: 1.2rem;
+  user-select: none;
+  transition: transform 2.3s ease;
+}
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+@media all and (max-width:500px) {
+  .logo{
+  top: 2rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+
+  .Butt{
+    visibility: hidden;
+  }
+}
+.App-link {
+  color: #61dafb;
+}
+
+img{
+  display: block;
+  width: 60vw;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
