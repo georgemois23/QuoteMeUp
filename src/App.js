@@ -47,7 +47,7 @@ function App() {
     // Close the modal after 5 seconds
     const closeTimer = setTimeout(() => {
       setOpen(false); // Close the modal after 5 seconds
-    }, 3000);
+    }, 2500);
 
     // Cleanup timers when component unmounts or when the modal is closed
     return () => {
@@ -184,7 +184,7 @@ function App() {
     width: '60vw',
     minWidth: '200px',
     height: 'fit-content'
-
+    
    }}>
     <Box sx={{marginInline: 'auto'}}>
    Quote
