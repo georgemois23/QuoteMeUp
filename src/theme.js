@@ -1,6 +1,6 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
-export const lightTheme = createTheme({
+export const lightTheme = responsiveFontSizes(createTheme({
   palette: {
     mode: "light",
     primary: {
@@ -18,9 +18,9 @@ export const lightTheme = createTheme({
       primary: "#000000",
     },
   },
-});
+}));
 
-export const darkTheme = createTheme({
+export const darkTheme = responsiveFontSizes(createTheme({
   palette: {
     mode: "dark",
     primary: {
@@ -38,4 +38,4 @@ export const darkTheme = createTheme({
       primary: "#c8d9f7",
     },
   },
-});
+}));
