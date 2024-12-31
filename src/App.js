@@ -61,7 +61,7 @@ function App() {
     setError(null); // Reset error before making the request
     try {
       console.log("Making API request...");
-      const response = await fetch('https://dummyjson.com/quostes/random'); // Use the new API URL
+      const response = await fetch('https://dummyjson.com/quotes/random'); // Use the new API URL
       
       if (response.ok) {
         const data = await response.json();
