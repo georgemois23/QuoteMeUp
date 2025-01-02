@@ -14,6 +14,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Typography } from '@mui/material';
 import { lightTheme, darkTheme } from "./theme";
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import './App.css';
 
 export default function TemporaryDrawer({onTheme}) {
@@ -50,7 +51,7 @@ export default function TemporaryDrawer({onTheme}) {
           // ,fontFamily: 'Chelsea Market, sans-serif'
         }}
       >
-        Change theme color 
+        <DarkModeOutlinedIcon />
       </Button>
      
       
