@@ -29,18 +29,20 @@ export default function TemporaryDrawer({onTheme}) {
   }
 
   const DrawerList = (
-    <Box  sx={{ display:'flex', justifyContent:'center',flexDirection:'column' ,gap:'10rem', width: '100vw', height:'100vh', bgcolor: 'background.default', textAlign:'center' } } role="presentation" onClick={toggleDrawer(false)}>
+    <Box sx={{ width: '100vw', height:'100vh',display:'flex', justifyContent:'center',flexDirection:'column',bgcolor: 'background.default'}}>
+    <Box  sx={{ display:'flex', justifyContent:'center',flexDirection:'column' ,gap:'1rem', bgcolor: 'background.default', textAlign:'center' } } role="presentation" onClick={toggleDrawer(false)}>
       <Typography variant="div" className="logo" style={{ fontFamily: 'Pacifico-Regular ,Audiowide, Ruslan Display,Chelsea Market, sans-serif' }}>
               Quote me up!
             </Typography>
 
           <Typography variant='h6'>MENU</Typography>
+          <Typography >This site was created by George Moysiadis</Typography>
           <Button
         variant="contained"
         onClick={toggleTheme}
         className="Butts"
         sx={{
-          fontSize: '17px',
+          textWrap:'wrap',
           backgroundColor: 'text.primary',
           width: 'fit-content',
           color: 'background.default'
@@ -48,10 +50,12 @@ export default function TemporaryDrawer({onTheme}) {
           // ,fontFamily: 'Chelsea Market, sans-serif'
         }}
       >
-        Change 
+        Change theme color 
       </Button>
      
-      <Button sx={{bgcolor: 'text.primary', color: 'background.default', marginInline:'auto'}} onClick={toggleDrawer(false)}>Close menu</Button> 
+      
+    </Box>
+    <Button sx={{bgcolor: 'text.primary', color: 'background.default',marginInline:'auto',marginTop:'6rem'}} onClick={toggleDrawer(false)}>Close menu</Button> 
     </Box>
   );
 
