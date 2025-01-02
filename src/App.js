@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { ThemeProvider, CssBaseline, Box, Typography, Button, Modal, Fade } from "@mui/material";
 import { lightTheme, darkTheme } from "./theme";
+import Drawers from './Drawer';
 import './App.css';
 function App() {
   const showAlert = sessionStorage.getItem("alert")=== 'true';
@@ -234,6 +235,9 @@ function App() {
         borderRadius: '.2rem'
        }}
         >Site is under construction!</Box> */}
+
+ {/* <Drawers /> */}
+ <Drawers onTheme={toggleTheme} />
 
       </Box>
     </ThemeProvider>

@@ -68,7 +68,15 @@
   color: white;
 }
 
+@media all and (min-width:500px) {
+ .menu{
+  visibility: hidden;
+ }
+}
 @media all and (max-width:500px) {
+  .menu{
+    visibility: visible;
+  }
   .logo{
   top: 2rem;
   left: 50%;

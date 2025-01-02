@@ -1,6 +1,23 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 export const lightTheme = responsiveFontSizes(createTheme({
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          '&:focus': {
+            outline: 'none', // Remove focus ring
+            backgroundColor:'none',
+          },
+          '&:active': {
+            // backgroundColor: 'yourDesiredColor',
+             // Set your custom active color
+             outline: 'none',
+             backgroundColor:'none',
+          },
+        },
+      },
+    },},
   palette: {
     mode: "light",
     primary: {
@@ -21,6 +38,24 @@ export const lightTheme = responsiveFontSizes(createTheme({
 }));
 
 export const darkTheme = responsiveFontSizes(createTheme({
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          '&:focus': {
+            outline: 'none', // Remove focus ring
+            backgroundColor:'none',
+          },
+          '&:active': {
+            // backgroundColor: 'yourDesiredColor',
+             // Set your custom active color
+             outline: 'none',
+             backgroundColor:'none',
+          },
+        },
+      },
+    },
+  },
   palette: {
     mode: "dark",
     primary: {
