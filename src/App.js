@@ -1,8 +1,11 @@
 import React, { useState,useEffect } from "react";
-import { ThemeProvider, CssBaseline, Box, Typography, Button, Modal, Fade } from "@mui/material";
+import { ThemeProvider, CssBaseline, Box, Typography, Button, Modal, Fade, Tooltip } from "@mui/material";
 import { lightTheme, darkTheme } from "./theme";
 import Drawers from './Drawer';
 import './App.css';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
+
 function App() {
   const showAlert = sessionStorage.getItem("alert")=== 'true';
   const storedTheme = localStorage.getItem("theme") === "lightTheme" ? "lightTheme" : "darkTheme";
@@ -151,6 +154,7 @@ function App() {
   color: 'background.default',
   bgcolor: 'text.primary',
   border: '2px solid #000',
+  outline: 'none',
   textAlign: 'center',
   boxShadow: 24,
   p: 4,}}>
@@ -180,7 +184,12 @@ function App() {
           // ,fontFamily: 'Chelsea Market, sans-serif'
         }}
       >
-        {darkMode ? 'white' : 'blue'}
+        {/* {darkMode ? 'white' : 'blue'} */}
+        <Tooltip title='Change theme color'>
+        {storedTheme==='lightTheme'?
+        <DarkModeOutlinedIcon/> :
+        <WbSunnyOutlinedIcon/> }
+        </Tooltip>
       </Button>
      
    <Box

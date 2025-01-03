@@ -12,14 +12,18 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Typography } from '@mui/material';
+import { Toolbar, Tooltip, Typography } from '@mui/material';
 import { lightTheme, darkTheme } from "./theme";
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import './App.css';
 
 export default function TemporaryDrawer({onTheme}) {
   const [open, setOpen] = React.useState(false);
   const [changetheme, setChangetheme] = useState(false);
+
+  const storedTheme = localStorage.getItem("theme")
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -36,7 +40,7 @@ export default function TemporaryDrawer({onTheme}) {
               Quote me up!
             </Typography>
 
-          <Typography variant='h6'>MENU</Typography>
+          {/* <Typography variant='h6'>MENU</Typography> */}
           <Typography >This site was created by George Moysiadis</Typography>
           <Button
         variant="contained"
@@ -51,12 +55,16 @@ export default function TemporaryDrawer({onTheme}) {
           // ,fontFamily: 'Chelsea Market, sans-serif'
         }}
       >
-        <DarkModeOutlinedIcon />
+        <Tooltip title='Change theme color' bg="text.primary">
+        {storedTheme==='lightTheme'?
+        <DarkModeOutlinedIcon/> :
+        <WbSunnyOutlinedIcon/> }
+        </Tooltip>
       </Button>
      
       
     </Box>
-    <Button sx={{bgcolor: 'text.primary', color: 'background.default',marginInline:'auto',marginTop:'6rem'}} onClick={toggleDrawer(false)}>Close menu</Button> 
+    <Button sx={{bgcolor: 'text.primary', color: 'background.default',marginInline:'auto',marginTop:'6rem'}} onClick={toggleDrawer(false)}><CloseOutlinedIcon/></Button> 
     </Box>
   );
 

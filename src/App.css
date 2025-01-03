@@ -41,6 +41,7 @@
   scale: 1.01;
 }
 .logo{
+  z-index: 1000;
   position: fixed;
   top: 1.3rem;
   left:2.3rem;
@@ -49,6 +50,9 @@
   transition: transform 2.3s ease;
 }
 
+.Butt{
+  visibility: hidden;
+}
 
 
 @media (prefers-reduced-motion: no-preference) {
@@ -70,7 +74,7 @@
 
 @media all and (min-width:500px) {
  .menu{
-  visibility: hidden;
+  /* visibility: hidden; */
  }
 }
 @media all and (max-width:500px) {
@@ -78,6 +82,7 @@
     visibility: visible;
   }
   .logo{
+    
   top: 2rem;
   left: 50%;
   transform: translate(-50%, -50%);
