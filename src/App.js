@@ -64,18 +64,18 @@ function App() {
     setLoading(true);
     setError(null); // Reset error before making the request
     try {
-      console.log("Making API request...");
+      // console.log("Making API request...");
       const response = await fetch('https://dummyjson.com/quotes/random'); // Use the new API URL
       
       if (response.ok) {
         const data = await response.json();
-        console.log("Fetched data:", data); // Check the response data in the console
+        // console.log("Fetched data:", data); // Check the response data in the console
         // Assuming the response contains a quote and an author
         if (data && data.quote && data.author) {
 
           if(data.quote.length>100 ){
             fetchQuote();
-            console.log("Too big quote");
+            // console.log("Too big quote");
           }
           else{
           // setnextQuote(`"${data.quote}"\n - ${data.author}`);
@@ -93,7 +93,7 @@ function App() {
         setnextQuoteBut("Please try again!");
       }
     } catch (err) {
-      console.error("Error fetching quote:", err);
+      // console.error("Error fetching quote:", err);
       setError("Error fetching quote");
     } finally {
       setLoading(false);
