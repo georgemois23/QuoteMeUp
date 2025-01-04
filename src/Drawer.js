@@ -18,6 +18,7 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import './App.css';
+import { FireExtinguisher } from '@mui/icons-material';
 
 export default function TemporaryDrawer({onTheme}) {
   const [open, setOpen] = React.useState(false);
@@ -63,14 +64,14 @@ export default function TemporaryDrawer({onTheme}) {
       </Button>
      
       
-    </Box>
-    <Button sx={{bgcolor: 'text.primary', color: 'background.default',marginInline:'auto',marginTop:'6rem'}} onClick={toggleDrawer(false)}><CloseOutlinedIcon/></Button> 
+    </Box >
+    <Button disableRipple='true' focusRipple='true' sx={{marginTop:'6rem',borderRadius:'50%',width:'5px',position:'fixed',bottom:'1rem',left: '50%',transform: 'translateX(-50%)'}} onClick={toggleDrawer(false)}><CloseOutlinedIcon sx={{bgcolor:'text.primary',color:'background.default',borderRadius:'50%'}}/></Button> 
     </Box>
   );
 
   return (
     <div>
-      <Button className='menu' sx={{position:'fixed',top:'1rem',right: '1rem'}} onClick={toggleDrawer(true)}><MenuIcon 
+      <Button disableRipple={true} className='menu' sx={{position:'fixed',top:'1rem',right: '1rem'}} onClick={toggleDrawer(true)}><MenuIcon 
       sx={{color:'text.primary',
         '&:hover': {
       backgroundColor: 'none',
