@@ -39,6 +39,9 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const [okay, setOkay] = useState(false);
+
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -76,6 +79,7 @@ function App() {
         response = await fetch('https://quotes-api-self.vercel.app/quote');
       }
       if (response.ok) {
+        setOkay(true);
         const data = await response.json();
         // console.log("Fetched data:", data); // Check the response data in the console
         // Assuming the response contains a quote and an author
@@ -95,6 +99,7 @@ function App() {
           setnextQuote("There was a problem loading the quote");
         }
       } else {
+        setOkay(false);
         setCounter(counter + 1);
         // setError("Failed to fetch quote");
         setnextQuote("There was a problem connecting to the server");
@@ -102,6 +107,7 @@ function App() {
         setnextQuoteBut("Please try again!");
       }
     } catch (err) {
+      setOkay(false);
       setnextQuote("There was a problem loading the quote");
       // console.error("Error fetching quote:", err);
       // setError("Error fetching quote");
@@ -221,9 +227,10 @@ function App() {
             height: 'fit-content'
 
           }}>
+            {okay ?
           <Box sx={{ marginInline: 'auto' }}>
             Quote
-          </Box>
+          </Box> : null}
           <Typography sx={{ marginInline: 'auto', fontSize: '1.5rem', textAlign: 'center' }}>
             {/* {loading ? 'Loading...' : nextQuote} */}
             {nextQuote}
