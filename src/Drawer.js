@@ -65,13 +65,13 @@ export default function TemporaryDrawer({onTheme}) {
      
       
     </Box >
-    <Button disableRipple='true' focusRipple='true' sx={{marginTop:'6rem',borderRadius:'50%',width:'5px',position:'fixed',bottom:'1rem',left: '50%',transform: 'translateX(-50%)'}} onClick={toggleDrawer(false)}><CloseOutlinedIcon sx={{bgcolor:'text.primary',color:'background.default',borderRadius:'50%'}}/></Button> 
+    <Button disableRipple='true' focusRipple='true' sx={{bgcolor:'unset',marginTop:'6rem',borderRadius:'50%',width:'5px',position:'fixed',bottom:'1rem',left: '50%',transform: 'translateX(-50%)'}} onClick={toggleDrawer(false)}><CloseOutlinedIcon sx={{bgcolor:'text.primary',color:'background.default',borderRadius:'50%'}}/></Button> 
     </Box>
   );
 
   return (
     <div>
-      <Button disableRipple={true} className='menu' sx={{position:'fixed',top:'1rem',right: '1rem'}} onClick={toggleDrawer(true)}><MenuIcon 
+      <Button disableRipple={true} className='menu' sx={{bgcolor:'unset',position:'fixed',top:'1rem',right: '1rem'}} onClick={toggleDrawer(true)}><MenuIcon 
       sx={{color:'text.primary',
         '&:hover': {
       backgroundColor: 'none',
