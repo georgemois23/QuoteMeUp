@@ -102,8 +102,11 @@ function App() {
         setnextQuoteBut("Please try again!");
       }
     } catch (err) {
+      setnextQuote("There was a problem loading the quote");
       // console.error("Error fetching quote:", err);
-      setError("Error fetching quote");
+      // setError("Error fetching quote");
+      setError("Sorry for the incovinience :(")
+      setnextQuoteBut("Please try again!");
     } finally {
       setLoading(false);
     }
