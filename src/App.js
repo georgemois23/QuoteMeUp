@@ -7,6 +7,7 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import Snackbar from '@mui/material/Snackbar';
 
 function App() {
   
@@ -54,8 +55,11 @@ function App() {
 
 
   const [open, setOpen] = React.useState(false);
+  const [open1, setOpen1] = React.useState(false);
+  const [Snackbarmes, setSnackbarmes] = React.useState('');
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleClose1 = () => setOpen1(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -133,9 +137,19 @@ function App() {
   };
 
   const handlelike = () => {
+    if(!like){ 
+      setSnackbarmes('You liked this quote') 
+      
+     }
+    else{
+       setSnackbarmes('You unliked this quote');
+
+    }
+    setTimeout(() => {
+      setOpen1(true); // Open the Snackbar again with the updated message
+    }, 100); // Delay in ms to allow the Snackbar to close
     setLike(!like);
-
-
+    
   };
 
 
@@ -173,6 +187,13 @@ function App() {
           color: "text.primary",
         }}
       >
+          <Snackbar
+          sx={{width:'50vw',marginInline:'auto',textAlign:'center',padding:0,}}
+    open={open1}
+    autoHideDuration={1300}
+    onClose={handleClose1}
+    message={Snackbarmes}
+  />
         {/* <Button onClick={handleOpen}>Open modal</Button> */}
         <Modal
           aria-labelledby="transition-modal-title"
