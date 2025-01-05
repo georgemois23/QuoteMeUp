@@ -19,8 +19,12 @@ import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import './App.css';
 import { FireExtinguisher } from '@mui/icons-material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Navigate, useNavigate } from 'react-router-dom';
+
 
 export default function TemporaryDrawer({onTheme}) {
+  const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const [changetheme, setChangetheme] = useState(false);
 
@@ -30,6 +34,10 @@ export default function TemporaryDrawer({onTheme}) {
     setOpen(newOpen);
   };
 
+  const gotoFavorite = () => {
+    navigate('/favorites');
+
+  }
   const toggleTheme = () => {
     onTheme(true);
   }
@@ -43,6 +51,7 @@ export default function TemporaryDrawer({onTheme}) {
 
           {/* <Typography variant='h6'>MENU</Typography> */}
           <Typography >This site was created by George Moysiadis</Typography>
+          <Typography onClick={gotoFavorite} >Your favorite quotes <FavoriteIcon/></Typography>
           <Button
         variant="contained"
         onClick={toggleTheme}

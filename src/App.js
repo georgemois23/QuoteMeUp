@@ -23,6 +23,10 @@ function App() {
   const [like, setLike] = useState(false);
 
   const [counter, setCounter] = useState(0);
+  const [quote, setQuote] = useState('');
+  const [author, setAuthor] = useState('');
+  const [id, setId] = useState('');
+
   // const handleClick = () => {
   //     setnextQuote("-Next quote-");
   //     setnextQuoteBut("Change quote again :(");
@@ -96,7 +100,7 @@ function App() {
         response = await fetch('https://quotes-api-self.vercel.app/quote');
       }
       if (response.ok) {
-        setLike(false);
+        
         setOkay(true);
         const data = await response.json();
         // console.log("Fetched data:", data); // Check the response data in the console
@@ -108,6 +112,10 @@ function App() {
             // console.log("Too big quote");
           }
           else {
+            setLike(false);
+            setQuote(data.quote);
+            setAuthor(data.author);
+            setId(data.id);
             // setnextQuote(`"${data.quote}"\n - ${data.author}`);
             setnextQuote(`“${data.quote}”\n - ${data.author}`);
             setnextQuoteBut("Change quote :)");
@@ -138,8 +146,11 @@ function App() {
 
   const handlelike = () => {
     if(!like){ 
-      setSnackbarmes('You liked this quote') 
-      
+      setSnackbarmes('You liked this quote')
+      const storedQuotes = JSON.parse(localStorage.getItem('quotes')) || []; 
+      const newQuote = { quote: quote , author: author, id: id  };
+      const updatedQuotes = [...storedQuotes, newQuote];
+      localStorage.setItem('quotes', JSON.stringify(updatedQuotes));
      }
     else{
        setSnackbarmes('You unliked this quote');
@@ -292,15 +303,15 @@ function App() {
   >
     Quote
     {like ? (
-      <FavoriteIcon onClick={handlelike} sx={{
+      <FavoriteIcon  onClick={handlelike} sx={{
         position: 'absolute', 
         right: 0, fontSize: '20px'
-      }}  />
+      }}  /> 
     ) : (
       <FavoriteBorderIcon onClick={handlelike} sx={{
         position: 'absolute', 
         right: 0, fontSize: '20px'
-      }}  />
+      }}  /> 
     )}
   </Box>
 )}
