@@ -188,11 +188,22 @@ function App() {
         }}
       >
           <Snackbar
-          sx={{width:'50vw',marginInline:'auto',textAlign:'center',padding:0,}}
+          sx={{width:'fit-content',marginInline:'auto',textAlign:'center',padding:0,}}
     open={open1}
-    autoHideDuration={1300}
+    autoHideDuration={2300}
     onClose={handleClose1}
     message={Snackbarmes}
+    action={
+      <Button
+      
+      padding='0'
+        color="text.primary"
+        size="small"
+        onClick={handlelike}
+      >
+        Undo
+      </Button>
+    }
   />
         {/* <Button onClick={handleOpen}>Open modal</Button> */}
         <Modal
