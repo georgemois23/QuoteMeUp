@@ -55,7 +55,7 @@
   left:2.3rem;
   font-size: 1.35rem;
   user-select: none;
-  transition: transform 2.3s ease;
+  /* transition: transform 2.3s ease; */
 }
 
 .Butt{

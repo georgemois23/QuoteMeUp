@@ -7,9 +7,14 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 
 function App() {
+  
   const showAlert = sessionStorage.getItem("alert") === 'true';
-  const storedTheme = localStorage.getItem("theme") === "lightTheme" ? "lightTheme" : "darkTheme";
-  const [darkMode, setDarkMode] = useState(storedTheme === "darkTheme");
+  const getSystemTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const storedTheme = localStorage.getItem("theme");
+  const defaultTheme = storedTheme || (getSystemTheme() ? "darkTheme" : "lightTheme");
+  // const storedTheme = localStorage.getItem("theme") === "lightTheme" ? "lightTheme" : "darkTheme";
+  // const [darkMode, setDarkMode] = useState(storedTheme === "darkTheme");
+  const [darkMode, setDarkMode] = useState(defaultTheme === "darkTheme");
   const [nextQuote, setnextQuote] = useState("Welcome to the Quote me Up!");
   const [nextQuoteBut, setnextQuoteBut] = useState("Show the first quote :)");
 
@@ -18,6 +23,8 @@ function App() {
   //     setnextQuote("-Next quote-");
   //     setnextQuoteBut("Change quote again :(");
   // };
+
+  
   const handleLogo = () => {
     window.location.reload();
   };
