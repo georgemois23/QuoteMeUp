@@ -5,6 +5,8 @@ import Drawers from './Drawer';
 import './App.css';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function App() {
   
@@ -17,6 +19,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(defaultTheme === "darkTheme");
   const [nextQuote, setnextQuote] = useState("Welcome to the Quote me Up!");
   const [nextQuoteBut, setnextQuoteBut] = useState("Show the first quote :)");
+  const [like, setLike] = useState(false);
 
   const [counter, setCounter] = useState(0);
   // const handleClick = () => {
@@ -24,6 +27,7 @@ function App() {
   //     setnextQuoteBut("Change quote again :(");
   // };
 
+  
   
   const handleLogo = () => {
     window.location.reload();
@@ -71,9 +75,11 @@ function App() {
   }, []);
 
   const fetchQuote = async () => {
+    
     setLoading(true);
     setError(null); // Reset error before making the request
     try {
+      
       let response;
       // console.log("Making API request...");
       if ((await fetch('https://dummyjson.com/quotes/random')).ok) { setCounter(0); }
@@ -86,6 +92,7 @@ function App() {
         response = await fetch('https://quotes-api-self.vercel.app/quote');
       }
       if (response.ok) {
+        setLike(false);
         setOkay(true);
         const data = await response.json();
         // console.log("Fetched data:", data); // Check the response data in the console
@@ -125,7 +132,11 @@ function App() {
     }
   };
 
+  const handlelike = () => {
+    setLike(!like);
 
+
+  };
 
 
   const toggleTheme = () => {
@@ -232,12 +243,36 @@ function App() {
             width: '60vw',
             minWidth: '200px',
             height: 'fit-content'
+          }}
+          >
+           {okay && (
+  <Box 
+  // sx={{ marginInline: 'auto' }}
+  sx={{
+    display: 'flex',
+    justifyContent: 'center', // Centers the "Quote" text
+    alignItems: 'center', // Vertically centers all content
+    position: 'relative', // Required for the absolute positioning of the heart icon
+    marginInline: 'auto',
+    width: '100%', // Adjust width as needed
+    // maxWidth: '400px',
+  }}
+  >
+    Quote
+    {like ? (
+      <FavoriteIcon onClick={handlelike} sx={{
+        position: 'absolute', 
+        right: 0, fontSize: '20px'
+      }}  />
+    ) : (
+      <FavoriteBorderIcon onClick={handlelike} sx={{
+        position: 'absolute', 
+        right: 0, fontSize: '20px'
+      }}  />
+    )}
+  </Box>
+)}
 
-          }}>
-            {okay ?
-          <Box sx={{ marginInline: 'auto' }}>
-            Quote
-          </Box> : null}
           <Typography sx={{ marginInline: 'auto', fontSize: '1.5rem', textAlign: 'center' }}>
             {/* {loading ? 'Loading...' : nextQuote} */}
             {nextQuote}
