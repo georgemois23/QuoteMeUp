@@ -6,7 +6,16 @@ import { lightTheme, darkTheme } from "./theme";
 import './App.css';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import ClearIcon from '@mui/icons-material/Clear';
+import HomeIcon from '@mui/icons-material/Home';
+import { Navigate, useNavigate } from 'react-router-dom';
+
 const Favourite = () => {
+   const navigate = useNavigate();
+
+   const goBack = () => {
+    navigate('/');
+
+  }
     const [quotes, setQuotes] = useState([]);
     const storedTheme = localStorage.getItem("theme");
     const getSystemTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -48,7 +57,7 @@ function removeQuoteById(idToRemove) {
     padding: '1rem', // Optional: Prevent content from touching edges
   }}
 >
-<Typography variant='h4'>Liked quotes</Typography>
+<Typography variant='h4' fontFamily={'Chelsea Market'}>{quotes.length === 0 ? "You haven't liked any quotes yet :(" : 'Liked quotes'}</Typography>
   {quotes.map((quote, index) => (
     <Box
       key={index}
@@ -79,8 +88,10 @@ function removeQuoteById(idToRemove) {
         }}
         onClick={() => removeQuoteById(quote.id)}
       />
+      
     </Box>
   ))}
+  <HomeIcon onClick={goBack} sx={{position:'fixed',bottom:'1rem'}}/>
 </Box>
      </ThemeProvider>
   );
