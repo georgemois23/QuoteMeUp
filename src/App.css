@@ -9,6 +9,12 @@
 .MuiButtonBase-root:active {
   background-color: unset;
 } */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: none; /* Prevent body scrolling */
+}
 
 *{
   user-select: none;

@@ -79,7 +79,8 @@ function removeQuoteById(idToRemove) {
   {/* Scrollable container */}
   <Box
     sx={{
-      height: '100vh', // Full viewport height
+      height: '100%', // Full viewport height
+      
       overflowY: 'auto', // Enable vertical scrolling
       padding: '1rem', // Add spacing around
       display: 'flex',
@@ -111,6 +112,7 @@ function removeQuoteById(idToRemove) {
           width: '80%', // Adjust for responsiveness
           maxWidth: '600px', // Limit box width
           backgroundColor: 'background.color',
+      
         }}
       >
         <blockquote>“{quote.quote}”</blockquote>
