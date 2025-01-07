@@ -16,6 +16,25 @@ const Favourite = () => {
     navigate('/');
 
   }
+
+  const handleLogo = () => {
+      navigate('/')
+    };
+    useEffect(() => {
+      // Attach the event listener when the component mounts
+      const logo = document.querySelector('.logo');
+      if (logo) {
+        logo.addEventListener('click', handleLogo);
+      }
+  
+      // Cleanup the event listener when the component unmounts
+      return () => {
+        if (logo) {
+          logo.removeEventListener('click', handleLogo);
+        }
+      };
+    }, []);
+  
     const [quotes, setQuotes] = useState([]);
     const storedTheme = localStorage.getItem("theme");
     const getSystemTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -43,57 +62,86 @@ function removeQuoteById(idToRemove) {
   return (
     
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-          <CssBaseline />
-          <Typography variant="div" className="logo" style={{ fontFamily: 'Pacifico-Regular ,Audiowide, Ruslan Display,Chelsea Market, sans-serif' }}>
-          Quote me up!
-        </Typography>
-        <Box
-  sx={{
-    display: 'flex',
-    flexDirection: 'column', // Stack all boxes vertically
-    justifyContent: 'center', // Center vertically
-    alignItems: 'center', // Center horizontally
-    height: '100vh', // Full viewport height
-    padding: '1rem', // Optional: Prevent content from touching edges
-  }}
->
-<Typography variant='h4' fontFamily={'Chelsea Market'}>{quotes.length === 0 ? "You haven't liked any quotes yet :(" : 'Liked quotes'}</Typography>
-  {quotes.map((quote, index) => (
-    <Box
-      key={index}
-      sx={{
-        border: '2px solid',
-        borderColor: 'text.primary',
-        margin: '1rem',
-        padding: '1rem',
-        borderRadius: '10px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'relative',
-        textAlign:'center',
-        width: '80%', // Adjust for responsiveness
-        maxWidth: '600px', // Optional: Limit box width
-      }}
-    >
-      <blockquote>“{quote.quote}”</blockquote>
-      <footer>- {quote.author || "Unknown"} -</footer>
-      <ClearIcon
+  <CssBaseline />
+  {/* Logo */}
+  <Typography
+    variant="div"
+    className="logo"
+    style={{
+      fontFamily: 'Pacifico-Regular, Audiowide, Ruslan Display, Chelsea Market, sans-serif',
+      textAlign: 'center',
+      marginBottom: '1rem',
+    }}
+  >
+    Quote me up!
+  </Typography>
+
+  {/* Scrollable container */}
+  <Box
+    sx={{
+      height: '100vh', // Full viewport height
+      overflowY: 'auto', // Enable vertical scrolling
+      padding: '1rem', // Add spacing around
+      display: 'flex',
+      marginTop:'4rem',
+      flexDirection: 'column', // Stack elements vertically
+      alignItems: 'center', // Center items horizontally
+    }}
+  >
+    {/* Title */}
+    <Typography variant="h4" fontFamily={'Chelsea Market'} textAlign="center" marginBottom="1rem">
+      {quotes.length === 0 ? "You haven't liked any quotes yet :(" : 'Liked quotes'}
+    </Typography>
+
+    {/* Quotes */}
+    {quotes.map((quote, index) => (
+      <Box
+        key={index}
         sx={{
-          position: 'absolute',
-          bottom: '8px',
-          right: '8px',
-          fontSize: '20px',
+          border: '2px solid',
+          borderColor: 'text.primary',
+          margin: '1rem 0', // Vertical spacing
+          padding: '1rem',
+          borderRadius: '10px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          position: 'relative',
+          textAlign: 'center',
+          width: '80%', // Adjust for responsiveness
+          maxWidth: '600px', // Limit box width
+          backgroundColor: 'background.color',
         }}
-        onClick={() => removeQuoteById(quote.id)}
-      />
-      
-    </Box>
-  ))}
-  <HomeIcon onClick={goBack} sx={{position:'fixed',bottom:'1rem'}}/>
-</Box>
-     </ThemeProvider>
+      >
+        <blockquote>“{quote.quote}”</blockquote>
+        <footer>- {quote.author || "Unknown"} -</footer>
+        <ClearIcon
+          sx={{
+            position: 'absolute',
+            bottom: '8px',
+            right: '8px',
+            fontSize: '20px',
+            cursor: 'pointer',
+          }}
+          onClick={() => removeQuoteById(quote.id)}
+        />
+      </Box>
+    ))}
+  </Box>
+
+  {/* Home Icon */}
+  <HomeIcon
+    onClick={goBack}
+    sx={{
+      position: 'fixed',
+      bottom: '.5rem',
+      right: '.3rem',
+      fontSize: '40px',
+      cursor: 'pointer',
+    }}
+  />
+</ThemeProvider>
+
   );
 };
 

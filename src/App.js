@@ -8,9 +8,10 @@ import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Snackbar from '@mui/material/Snackbar';
+import { Navigate,useNavigate} from "react-router-dom";
 
 function App() {
-  
+  const navigate = useNavigate();
   const showAlert = sessionStorage.getItem("alert") === 'true';
   const getSystemTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
   const storedTheme = localStorage.getItem("theme");
@@ -144,6 +145,9 @@ function App() {
     }
   };
 
+  const handleViewAll = () => {
+    navigate('/favorites')
+  }
   const handlelike = () => {
     if(!like){ 
       setSnackbarmes('You liked this quote')
@@ -210,9 +214,9 @@ function App() {
       padding='0'
         color="text.primary"
         size="small"
-        onClick={handlelike}
+        onClick={handleViewAll}
       >
-        Undo
+        View all
       </Button>
     }
   />
