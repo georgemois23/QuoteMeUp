@@ -41,7 +41,33 @@ const Favourite = () => {
   const defaultTheme = storedTheme || (getSystemTheme() ? "darkTheme" : "lightTheme");
 const [darkMode, setDarkMode] = useState(defaultTheme === "darkTheme");
 
-   
+const [showLogo, setShowLogo] = useState(true); // State to manage logo visibility
+  const [lastScrollY, setLastScrollY] = useState(0); // Track the last scroll position
+  const [scrollingDown, setScrollingDown] = useState(false); // Track if scrolling down
+  const threshold = 50; // Scroll distance threshold (in pixels) to hide/show the logo
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY && window.scrollY > threshold) {
+        // Scrolling down and passed threshold
+        setScrollingDown(true);
+      } else if (window.scrollY < lastScrollY && window.scrollY > threshold) {
+        // Scrolling up and passed threshold
+        setScrollingDown(false);
+      }
+
+      setLastScrollY(window.scrollY); // Update the last scroll position
+    };
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
+
 function removeQuoteById(idToRemove) {
   // Step 1: Retrieve the quotes array from localStorage
   const storedQuotes = JSON.parse(localStorage.getItem('quotes')) || [];
@@ -71,6 +97,10 @@ function removeQuoteById(idToRemove) {
       fontFamily: 'Pacifico-Regular, Audiowide, Ruslan Display, Chelsea Market, sans-serif',
       textAlign: 'center',
       marginBottom: '1rem',
+      transition: 'top 0.8s', // Smooth transition for the top property
+      top: scrollingDown ? '-100px' : '1.3rem',
+
+
     }}
   >
     Quote me up!
