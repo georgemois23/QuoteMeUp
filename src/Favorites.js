@@ -98,7 +98,7 @@ function removeQuoteById(idToRemove) {
       textAlign: 'center',
       marginBottom: '1rem',
       transition: 'top 0.8s', // Smooth transition for the top property
-      top: scrollingDown ? '-100px' : '1.3rem',
+      top: scrollingDown ? '-100px' : '2rem',
 
 
     }}
