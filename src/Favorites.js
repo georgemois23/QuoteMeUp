@@ -22,7 +22,7 @@ const Favourite = () => {
     };
     useEffect(() => {
       // Attach the event listener when the component mounts
-      const logo = document.querySelector('.logo');
+      const logo = document.querySelector('.logso');
       if (logo) {
         logo.addEventListener('click', handleLogo);
       }
