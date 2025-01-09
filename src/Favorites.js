@@ -105,8 +105,8 @@ function removeQuoteById(idToRemove) {
       width: '100%',
      zIndex: '1000',
      height: '3rem',
-     paddingTop:'.3rem'
-
+     paddingTop:'.3rem',
+      opacity: '0.98'
     }}
   >
     Quote me up!
