@@ -92,14 +92,20 @@ function removeQuoteById(idToRemove) {
   {/* Logo */}
   <Typography
     variant="div"
-    className="logo"
-    style={{
+    className="logso"
+    sx={{
       fontFamily: 'Pacifico-Regular, Audiowide, Ruslan Display, Chelsea Market, sans-serif',
       textAlign: 'center',
+      position:'fixed',
+      fontSize:'1.35rem',
       marginBottom: '1rem',
       transition: 'top 0.8s', // Smooth transition for the top property
-      top: scrollingDown ? '-100px' : '2rem',
-
+      top: scrollingDown ? '-100px' : '0rem',
+      backgroundColor:'background.default',
+      width: '100%',
+     zIndex: '1000',
+     height: '3rem',
+     paddingTop:'.3rem'
 
     }}
   >
@@ -142,7 +148,6 @@ function removeQuoteById(idToRemove) {
           width: '80%', // Adjust for responsiveness
           maxWidth: '600px', // Limit box width
           backgroundColor: 'background.color',
-      
         }}
       >
         <blockquote>“{quote.quote}”</blockquote>
